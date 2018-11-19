@@ -16,7 +16,10 @@ class Order extends Clover
     {
         $httpClient = Clover::getHttpClient();
 
-        $order = $httpClient->post("merchants/$merchantId/orders", $orderData);
+        $version = static::VERSION;
+        $order = $httpClient->post("$version/merchants/$merchantId/orders", [
+            'json' => $orderData
+        ]);
 
         return $order;
     }
