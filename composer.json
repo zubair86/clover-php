@@ -30,7 +30,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Guesl\\Loyalty\\": "src/"
+      "Guesl\\Clover\\": "src/"
     }
   },
   "autoload-dev": {

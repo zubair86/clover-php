@@ -4,6 +4,10 @@ namespace Guesl\Clover\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
+/**
+ * Class CloverServiceProvider
+ * @package Guesl\Clover\Providers
+ */
 class CloverServiceProvider extends ServiceProvider
 {
     /**
