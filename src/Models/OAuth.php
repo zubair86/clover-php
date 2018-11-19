@@ -32,7 +32,9 @@ class OAuth extends Clover
             ],
         ]);
 
-        $response = $client->post('oauth/token');
-        return $response;
+        $response = $client->get('oauth/token');
+
+        $accessToken = $response['access_token'];
+        return $accessToken;
     }
 }

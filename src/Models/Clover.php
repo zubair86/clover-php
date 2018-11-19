@@ -21,7 +21,7 @@ class Clover
     const PRODUCTION_URL = 'https://api.clover.com/';
 
     /**
-     *
+     * @var
      */
     const VERSION = 'v3';
 
@@ -43,33 +43,14 @@ class Clover
     /**
      * @var
      */
-    private static $authCode;
-
-    /**
-     * @var
-     */
-    private static $apiToken;
-
+    private static $accessToken;
 
     /**
      * @return HttpClient
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected static function getHttpClient()
     {
-        if (env('APP_ENV') != 'production') {
-            $token = static::getApiToken();
-
-        } else {
-            $authCode = static::getAuthCode();
-            $clientId = static::getClientId();
-            $clientSecret = static::getClientSecret();
-
-            $token = OAuth::accessToken($clientId, $clientSecret, $authCode);
-        }
-
-        $accessToken = $token;
-
+        $accessToken = static::getAccessToken();
         $baseUrl = static::getBaseUrl();
 
         $client = HttpClient::getInstance($baseUrl, [
@@ -114,7 +95,7 @@ class Clover
     {
         $clientSecret = self::$clientSecret;
         if (!isset($clientSecret)) {
-            $clientSecret = config('services.loyalty.client_secret');
+            $clientSecret = config('c.client_secret');
         }
 
         return $clientSecret;
@@ -153,32 +134,16 @@ class Clover
     /**
      * @return mixed
      */
-    public static function getAuthCode()
+    public static function getAccessToken()
     {
-        return self::$authCode;
+        return self::$accessToken;
     }
 
     /**
-     * @param $authCode
+     * @param mixed $accessToken
      */
-    public static function setAuthCode($authCode): void
+    public static function setAccessToken($accessToken): void
     {
-        self::$authCode = $authCode;
-    }
-
-    /**
-     * @return mixed
-     */
-    public static function getApiToken()
-    {
-        return self::$apiToken;
-    }
-
-    /**
-     * @param mixed $apiToken
-     */
-    public static function setApiToken($apiToken): void
-    {
-        self::$apiToken = $apiToken;
+        self::$accessToken = $accessToken;
     }
 }
