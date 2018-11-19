@@ -84,7 +84,7 @@ class HttpClient
     {
         return [
             'headers' => [
-                'Content-Type' => 'application/x-www-form-urlencoded',
+                'Content-Type' => 'application/json',
                 'accept' => 'application/json',
             ],
         ];

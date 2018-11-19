@@ -2,8 +2,7 @@
 
 namespace Guesl\Clover\Models;
 
-use Guesl\Loyalty\HttpClient;
-use Illuminate\Support\Facades\Cache;
+use Guesl\Clover\HttpClient;
 
 /**
  * Class Clover
@@ -69,16 +68,14 @@ class Clover
             $token = OAuth::accessToken($clientId, $clientSecret, $authCode);
         }
 
-        $accessToken = $token['access_token'];
+        $accessToken = $token;
 
         $baseUrl = static::getBaseUrl();
 
         $client = HttpClient::getInstance($baseUrl, [
             'headers' => [
                 'Accept' => 'application/json',
-                'Content-Type' => 'application/x-www-form-urlencoded',
-                'X-APPLICATION-ID' => $applicationId,
-                'X-CLIENT-ID' => $clientId,
+                'Content-Type' => 'application/json',
                 'Authorization' => "Bearer $accessToken"
             ],
         ]);

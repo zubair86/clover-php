@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Log;
 class OAuth extends Clover
 {
     /**
-     * @param null $clientId
-     * @param null $clientSecret
-     * @param null $authCode
+     * @param $clientId
+     * @param $clientSecret
+     * @param $authCode
      * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function accessToken($clientId = null, $clientSecret = null, $authCode = null)
+    public static function accessToken($clientId, $clientSecret, $authCode)
     {
         Log::debug('OAuth::accessToken => Get the access token by client id and client secret.');
 
