@@ -26,6 +26,7 @@ class TaxRate extends Clover
         $taxRate = $httpClient->get("$version/merchants/$merchantId/tax_rates/$taxRateId");
 
         return $taxRate;
+
     }
 
     /**

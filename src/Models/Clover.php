@@ -2,6 +2,8 @@
 
 namespace Guesl\Clover\Models;
 
+use Exception;
+use Guesl\Clover\Exceptions\NotFoundException;
 use Guesl\Clover\HttpClient;
 
 /**
