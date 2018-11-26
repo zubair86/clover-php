@@ -1,7 +1,13 @@
 <?php
 
-namespace Guesl\Clover\Models;
+namespace Guesl\Clover\Models\Order;
 
+use Guesl\Clover\Models\Clover;
+
+/**
+ * Class Order
+ * @package Guesl\Clover\Models\Order
+ */
 class Order extends Clover
 {
     /**

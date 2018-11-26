@@ -1,6 +1,8 @@
 <?php
 
-namespace Guesl\Clover\Models;
+namespace Guesl\Clover\Models\Merchant;
+
+use Guesl\Clover\Models\Clover;
 
 /**
  * Class Merchant

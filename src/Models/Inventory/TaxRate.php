@@ -1,11 +1,17 @@
 <?php
 
-namespace Guesl\Clover\Models;
+namespace Guesl\Clover\Models\Inventory;
 
+use Guesl\Clover\Models\Clover;
+
+/**
+ * Class TaxRate
+ * @package Guesl\Clover\Models\Inventory
+ */
 class TaxRate extends Clover
 {
     /**
-     * Create an order.
+     * Create a tax rate.
      *
      * @param $merchantId
      * @param array $taxRateData

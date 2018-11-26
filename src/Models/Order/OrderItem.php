@@ -1,11 +1,17 @@
 <?php
 
-namespace Guesl\Clover\Models;
+namespace Guesl\Clover\Models\Order;
 
+use Guesl\Clover\Models\Clover;
+
+/**
+ * Class OrderItem
+ * @package Guesl\Clover\Models\Order
+ */
 class OrderItem extends Clover
 {
     /**
-     * Create an order.
+     * Create an order item.
      *
      * @param $merchantId
      * @param $orderId
