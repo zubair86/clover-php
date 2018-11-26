@@ -13,16 +13,16 @@ class TaxRate extends Clover
     /**
      * Retrieve the tax rate by id.
      *
-     * @param $merchantId
      * @param $taxRateId
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function retrieve($merchantId, $taxRateId)
+    public static function retrieve($taxRateId)
     {
-        $httpClient = Clover::getHttpClient();
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
 
-        $version = static::VERSION;
         $taxRate = $httpClient->get("$version/merchants/$merchantId/tax_rates/$taxRateId");
 
         return $taxRate;
@@ -32,16 +32,16 @@ class TaxRate extends Clover
     /**
      * Create a tax rate.
      *
-     * @param $merchantId
      * @param array $taxRateData
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function create($merchantId, $taxRateData = [])
+    public static function create($taxRateData = [])
     {
-        $httpClient = Clover::getHttpClient();
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
 
-        $version = static::VERSION;
         $taxRate = $httpClient->post("$version/merchants/$merchantId/tax_rates", [
             'json' => $taxRateData,
         ]);

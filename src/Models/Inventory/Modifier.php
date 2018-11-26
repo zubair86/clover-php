@@ -13,17 +13,17 @@ class Modifier extends Clover
     /**
      * Create a modifier.
      *
-     * @param $merchantId
      * @param $modifierGroupId
      * @param array $data
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function create($merchantId, $modifierGroupId, $data = [])
+    public static function create($modifierGroupId, $data = [])
     {
-        $httpClient = Clover::getHttpClient();
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
 
-        $version = static::VERSION;
         $result = $httpClient->post("$version/merchants/$merchantId/modifier_groups/$modifierGroupId/modifiers", [
             'json' => $data,
         ]);

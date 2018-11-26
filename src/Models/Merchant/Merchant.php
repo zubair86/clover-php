@@ -13,15 +13,16 @@ class Merchant extends Clover
     /**
      * Retrieve the merchant info.
      *
-     * @param $merchantId
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function retrieve($merchantId)
+    public static function retrieve()
     {
-        $httpClient = Clover::getHttpClient();
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
 
-        $merchant = $httpClient->get("merchants/$merchantId");
+        $merchant = $httpClient->get("$version/merchants/$merchantId");
 
         return $merchant;
     }

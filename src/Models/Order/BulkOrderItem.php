@@ -13,17 +13,17 @@ class BulkOrderItem extends Clover
     /**
      * Create bulk order items.
      *
-     * @param $merchantId
      * @param $orderId
      * @param array $orderItemsData
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function create($merchantId, $orderId, $orderItemsData = [])
+    public static function create($orderId, $orderItemsData = [])
     {
-        $httpClient = Clover::getHttpClient();
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
 
-        $version = static::VERSION;
         $result = $httpClient->post("$version/merchants/$merchantId/orders/$orderId/bulk_line_items", [
             'json' => $orderItemsData,
         ]);
@@ -34,16 +34,17 @@ class BulkOrderItem extends Clover
     /**
      * Create bulk order items using a tax rate.
      *
-     * @param $merchantId
      * @param $orderId
      * @param array $orderItemsData
      * @param array $taxRateData
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function createWithSingleTaxRate($merchantId, $orderId, $orderItemsData = [], $taxRateData = [])
+    public static function createWithSingleTaxRate($orderId, $orderItemsData = [], $taxRateData = [])
     {
-        $httpClient = Clover::getHttpClient();
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
 
         for ($i = 0; $i < sizeof($orderItemsData); $i++) {
             $orderItemsData[$i]['taxRates'] = [
@@ -51,7 +52,6 @@ class BulkOrderItem extends Clover
             ];
         }
 
-        $version = static::VERSION;
         $result = $httpClient->post("$version/merchants/$merchantId/orders/$orderId/bulk_line_items", [
             'json' => [
                 'items' => $orderItemsData,

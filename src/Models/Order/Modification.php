@@ -13,18 +13,18 @@ class Modification extends Clover
     /**
      * Apply a modification to a line item.
      *
-     * @param $merchantId
      * @param $orderId
      * @param $orderItemId
      * @param array $data
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function apply($merchantId, $orderId, $orderItemId, $data = [])
+    public static function apply($orderId, $orderItemId, $data = [])
     {
-        $httpClient = Clover::getHttpClient();
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
 
-        $version = static::VERSION;
         $result = $httpClient->post("$version/merchants/$merchantId/orders/$orderId/line_items/$orderItemId/modifications", [
             'json' => $data,
         ]);

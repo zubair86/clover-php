@@ -43,6 +43,11 @@ class Clover
     /**
      * @var
      */
+    private static $merchantId;
+
+    /**
+     * @var
+     */
     private static $accessToken;
 
     /**
@@ -95,7 +100,7 @@ class Clover
     {
         $clientSecret = self::$clientSecret;
         if (!isset($clientSecret)) {
-            $clientSecret = config('c.client_secret');
+            $clientSecret = config('clover.client_secret');
         }
 
         return $clientSecret;
@@ -117,7 +122,7 @@ class Clover
     {
         $clientId = self::$clientId;
         if (!isset($clientId)) {
-            $clientId = config('services.loyalty.client_id');
+            $clientId = config('clover.client_id');
         }
 
         return $clientId;
@@ -129,6 +134,22 @@ class Clover
     public static function setClientId($clientId): void
     {
         self::$clientId = $clientId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getMerchantId()
+    {
+        return self::$merchantId;
+    }
+
+    /**
+     * @param mixed $merchantId
+     */
+    public static function setMerchantId($merchantId): void
+    {
+        self::$merchantId = $merchantId;
     }
 
     /**
@@ -146,4 +167,5 @@ class Clover
     {
         self::$accessToken = $accessToken;
     }
+
 }
