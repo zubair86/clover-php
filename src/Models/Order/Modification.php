@@ -25,7 +25,7 @@ class Modification extends Clover
         $httpClient = Clover::getHttpClient();
 
         $version = static::VERSION;
-        $result = $httpClient->post("$version/merchants/$merchantId/orders/$orderId/line_items/$orderItemId/modifications,", [
+        $result = $httpClient->post("$version/merchants/$merchantId/orders/$orderId/line_items/$orderItemId/modifications", [
             'json' => $data,
         ]);
 
