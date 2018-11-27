@@ -1,25 +1,21 @@
 <?php
-/**
- * Created by Wei Chen.
- * User: go3solutions
- * Date: 11/27/18
- * Time: 1:12 PM
- */
 
 namespace Guesl\Clover\Models\Employee;
 
-
 use Guesl\Clover\Models\Clover;
 
+/**
+ * Class Employee
+ * @package Guesl\Clover\Models\Employee
+ */
 class Employee extends Clover
 {
-    private static $employeeId;
-
     /**
-     * Create an employee
+     * Create an employee.
      *
      * @param array $employeeData
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function create($employeeData = [])
     {
@@ -35,11 +31,12 @@ class Employee extends Clover
     }
 
     /**
-     * Update an employee info
+     * Update an employee info.
      *
      * @param $employeeId
      * @param array $employeeData
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function update($employeeId, $employeeData = [])
     {
@@ -55,10 +52,11 @@ class Employee extends Clover
     }
 
     /**
-     * Retrieve an employee
+     * Retrieve an employee.
      *
      * @param $employeeId
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function retrieve($employeeId)
     {
@@ -72,9 +70,10 @@ class Employee extends Clover
     }
 
     /**
-     * Fetch all employees
+     * Fetch all employees.
      *
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function fetch()
     {
@@ -89,10 +88,11 @@ class Employee extends Clover
 
 
     /**
-     * Delete an employee
+     * Delete an employee.
      *
      * @param $employeeId
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function delete($employeeId)
     {
@@ -103,21 +103,5 @@ class Employee extends Clover
         $result = $httpClient->delete("$version/merchants/$merchantId/employees/$employeeId");
 
         return $result;
-    }
-
-    /**
-     * @param $employeeId
-     */
-    public static function setEmployeeId($employeeId): void
-    {
-        self::$employeeId = $employeeId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public static function getEmployeeId()
-    {
-        return self::$employeeId;
     }
 }
