@@ -11,6 +11,13 @@ use Guesl\Clover\Models\Clover;
  */
 class ItemModifierGroup extends Clover
 {
+    /**
+     * Create an Item modifier group.
+     *
+     * @param array $itemModifierGroupData
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public static function create($itemModifierGroupData = [])
     {
         $httpClient = self::getHttpClient();

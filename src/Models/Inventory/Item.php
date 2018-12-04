@@ -16,6 +16,7 @@ class Item extends Clover
      *
      * @param array $itemData
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function create($itemData = [])
     {

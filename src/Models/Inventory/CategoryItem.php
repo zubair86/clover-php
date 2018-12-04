@@ -16,6 +16,7 @@ class CategoryItem extends Clover
      *
      * @param array $categoryItemData
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function create($categoryItemData = [])
     {
