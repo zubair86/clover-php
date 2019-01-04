@@ -26,6 +26,11 @@ class Clover
     const VERSION = 'v3';
 
     /**
+     *
+     */
+    const PAY_VERSION = 'v2';
+
+    /**
      * @var
      */
     protected static $baseUrl;
