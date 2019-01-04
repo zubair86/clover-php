@@ -25,7 +25,7 @@ class Pay extends Clover
         $merchantId = self::getMerchantId();
         $version = self::PAY_VERSION;
 
-        $encryptionInfo = $httpClient->get("$version/merchants/$merchantId/pay/key");
+        $encryptionInfo = $httpClient->get("$version/merchant/$merchantId/pay/key");
 
         return $encryptionInfo;
     }
@@ -46,7 +46,7 @@ class Pay extends Clover
         $encryptionInfo = self::getEncryption();
         $cardEncrypted = self::encryptCard($encryptionInfo, $card);
 
-        $payment = $httpClient->post("$version/merchants/$merchantId/pay", [
+        $payment = $httpClient->post("$version/merchant/$merchantId/pay", [
             "json" => [
                 "orderId" => $cloverOrderId,
                 "taxAmount" => 0,
