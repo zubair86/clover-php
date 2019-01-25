@@ -32,12 +32,12 @@ class OAuth extends Clover
         $clientSecret = $clientSecret ?? config("clover.client_secret");
         $authCode = $authCode ?? config("clover.auth_code");
 
-        if (config("clover.env") != "productions") {
+        if (config("clover.env") != "production") {
             $baseUrl = static::SANDBOX_URL;
         } else {
             $baseUrl = static::PRODUCTION_URL;
         }
-        
+
         $client = HttpClient::getInstance($baseUrl, [
             "query" => [
                 "client_id" => $clientId,
