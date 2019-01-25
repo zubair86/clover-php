@@ -13,22 +13,22 @@ class Clover
     /**
      * Sandbox api url.
      */
-    const SANDBOX_URL = 'https://apisandbox.dev.clover.com/';
+    const SANDBOX_URL = "https://apisandbox.dev.clover.com/";
 
     /**
      * Production api url.
      */
-    const PRODUCTION_URL = 'https://api.clover.com/';
+    const PRODUCTION_URL = "https://api.clover.com/";
 
     /**
      * @var
      */
-    const VERSION = 'v3';
+    const VERSION = "v3";
 
     /**
      *
      */
-    const PAY_VERSION = 'v2';
+    const PAY_VERSION = "v2";
 
     /**
      * @var
@@ -64,10 +64,10 @@ class Clover
         $baseUrl = static::getBaseUrl();
 
         $client = HttpClient::getInstance($baseUrl, [
-            'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-                'Authorization' => "Bearer $accessToken"
+            "headers" => [
+                "Accept" => "application/json",
+                "Content-Type" => "application/json",
+                "Authorization" => "Bearer $accessToken"
             ],
         ]);
 
@@ -82,7 +82,7 @@ class Clover
         $baseUrl = static::$baseUrl;
         if (!isset($baseUrl)) {
             $baseUrl = self::PRODUCTION_URL;
-            if (env('APP_ENV') != 'production') {
+            if (config('clover.env') != "production") {
                 $baseUrl = self::SANDBOX_URL;
             }
         }
@@ -105,7 +105,7 @@ class Clover
     {
         $clientSecret = self::$clientSecret;
         if (!isset($clientSecret)) {
-            $clientSecret = config('clover.client_secret');
+            $clientSecret = config("clover.client_secret");
         }
 
         return $clientSecret;
@@ -127,7 +127,7 @@ class Clover
     {
         $clientId = self::$clientId;
         if (!isset($clientId)) {
-            $clientId = config('clover.client_id');
+            $clientId = config("clover.client_id");
         }
 
         return $clientId;
