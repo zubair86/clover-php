@@ -29,4 +29,19 @@ class Order extends Clover
 
         return $order;
     }
+
+    /**
+     * Delete the clover order.
+     *
+     * @param $orderId
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public static function delete($orderId)
+    {
+        $httpClient = self::getHttpClient();
+        $merchantId = self::getMerchantId();
+        $version = self::VERSION;
+
+        $httpClient->delete("$version/merchants/$merchantId/orders/$orderId");
+    }
 }
